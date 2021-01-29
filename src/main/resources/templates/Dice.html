@@ -3,43 +3,49 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="../static/css/main.css" th:href="@{css/main.css}">
+    <link rel="stylesheet" href="../static/css/footer.css" th:href="@{css/footer.css}">
     <title>Dice</title>
 </head>
 <body>
-<h1>Dice Roller</h1>
-<p>
-
-    <img th:each="die: ${game.dice}"
-         th:src="@{|images/dice/side_${die.number}.png|}"
-         th:alt="'side ' + ${die.number}"
-         src="../static/images/dice/side_1.png" alt="side 1">
-    <!--/*-->
-    <img src="../static/images/dice/side_2.png" alt="side 2">
-    <img src="../static/images/dice/side_3.png" alt="side 3">
-    <!--*/-->
-</p>
-<p>
-    Total: <span th:text="${game.total}">6</span>
-</p>
-<form action="Dice.html" th:action="@{Dice}">
+<header><h1>Dice Roller</h1></header>
+<main>
+    <h2>Roll the Dice</h2>
     <p>
-        <label for="c">Number of Dice:</label>
-        <select id="c" th:name="count">
-            <option th:each="i : ${#numbers.sequence(1, 5)}"
-                    th:selected="${i == game.numberOfDice}"
-                    th:value="${i}" th:text="${i}">1</option>
-            <!--/*-->
-            <option th:value="2">2</option>
-            <option th:value="3" selected>3</option>
-            <option th:value="4">4</option>
-            <option th:value="5">5</option>
-            <!--*/-->
-        </select>
+        <img th:each="die: ${game.dice}"
+             th:src="@{|images/dice/side_${die.number}.png|}"
+             th:alt="'side ' + ${die.number}"
+             src="../static/images/dice/side_1.png" alt="side 1">
+        <!--/*-->
+        <img src="../static/images/dice/side_2.png" alt="side 2">
+        <img src="../static/images/dice/side_3.png" alt="side 3">
+        <!--*/-->
     </p>
     <p>
-        <input type="submit" value="Roll">
+        <span class="total_label">Total:</span>
+        <span th:text="${game.total}" class="total_number">6</span>
     </p>
-
-</form>
+    <form action="Dice.html" th:action="@{Dice}">
+        <p>
+            <label for="c">Number of Dice:</label>
+            <select id="c" th:name="count">
+                <option th:each="i : ${#numbers.sequence(1, 5)}"
+                        th:selected="${i == game.numberOfDice}"
+                        th:value="${i}" th:text="${i}">1</option>
+                <!--/*-->
+                <option th:value="2">2</option>
+                <option th:value="3" selected>3</option>
+                <option th:value="4">4</option>
+                <option th:value="5">5</option>
+                <!--*/-->
+            </select>
+        </p>
+        <p>
+            <input type="submit" value="Roll">
+        </p>
+    </form>
+</main>
+<footer>
+    Sheridan College&nbsp;&nbsp;<span class='hart'>&#9825;</span>&nbsp;&nbsp;2021
+</footer>
 </body>
 </html>

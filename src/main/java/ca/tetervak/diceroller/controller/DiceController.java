@@ -20,9 +20,6 @@ public class DiceController {
         Game game = new Game(count);
         game.rollDice();
 
-        ModelAndView modelAndView
-                = new ModelAndView("Dice", "game", game);
-        modelAndView.addObject("count", count);
-        return modelAndView;
+        return new ModelAndView("Dice", "game", game);
     }
 }
