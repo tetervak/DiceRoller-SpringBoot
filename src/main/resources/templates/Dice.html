@@ -12,8 +12,8 @@
     <h2>Roll the Dice</h2>
     <p>
         <img th:each="die: ${game.dice}"
-             th:src="@{|images/dice/side_${die.number}.png|}"
-             th:alt="'side ' + ${die.number}"
+             th:src="@{|images/dice/side_${die.value}.png|}"
+             th:alt="'side ' + ${die.value}"
              src="../static/images/dice/side_1.png" alt="side 1">
         <!--/*-->
         <img src="../static/images/dice/side_2.png" alt="side 2">

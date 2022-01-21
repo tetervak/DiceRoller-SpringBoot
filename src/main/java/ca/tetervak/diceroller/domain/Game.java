@@ -30,7 +30,7 @@ public class Game implements Serializable {
     public int getTotal(){
         int total = 0;
         for(Die die: dice){
-            total += die.getNumber();
+            total += die.getValue();
         }
         return total;
     }

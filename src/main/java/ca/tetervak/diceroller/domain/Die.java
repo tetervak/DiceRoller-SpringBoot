@@ -6,31 +6,37 @@ import org.slf4j.LoggerFactory;
 import java.io.Serializable;
 import java.util.Random;
 
-
 public class Die implements Serializable {
 
     private final Logger logger = LoggerFactory.getLogger(Die.class);
 
-    private int number = 1;
+    private int value = 1;
 
-    private final Random random = new Random();
+    private final Random random;
 
     public Die(){
-        logger.trace("The constructor is called.");
+        this(new Random());
+        logger.trace("Die() is called.");
     }
 
-    public int getNumber() {
-        return number;
+    public Die(Random random){
+        this.random = random;
+        logger.trace("Die(Random random) constructor is called.");
     }
 
-    public void setNumber(int number) {
+    public int getValue() {
+        return value;
+    }
+
+    public void setValue(int value) {
         logger.trace("setNumber() is called.");
-        this.number = number;
+        logger.debug("number = " + value);
+        this.value = value;
     }
 
     public void rollDie(){
         logger.trace("rollDie() is called");
-        number = 1 + random.nextInt(6);
-        logger.debug("number = " + number);
+        value = 1 + random.nextInt(6);
+        logger.debug("number = " + value);
     }
 }
