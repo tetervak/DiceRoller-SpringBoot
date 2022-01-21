@@ -13,7 +13,7 @@ public class DiceController {
 
     private final Logger logger = LoggerFactory.getLogger(DiceController.class);
 
-    @GetMapping(value = {"/", "/Dice"})
+    @GetMapping(value = {"/", "/dice"})
     public ModelAndView dice(@RequestParam(defaultValue = "3") int count){
         logger.trace("dice() is called");
 
