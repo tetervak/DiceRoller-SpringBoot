@@ -10,18 +10,20 @@ public class Die implements Serializable {
 
     private final Logger logger = LoggerFactory.getLogger(Die.class);
 
-    private int value = 1;
+    public static final int INIT_DIE_VALUE = 1;
+
+    private int value = INIT_DIE_VALUE;
+    private boolean isRolled = false;
 
     private final Random random;
 
     public Die(){
         this(new Random());
-        logger.trace("Die() is called.");
     }
 
     public Die(Random random){
         this.random = random;
-        logger.trace("Die(Random random) constructor is called.");
+        logger.trace("Die constructor is called.");
     }
 
     public int getValue() {
@@ -30,13 +32,29 @@ public class Die implements Serializable {
 
     public void setValue(int value) {
         logger.trace("setNumber() is called.");
-        logger.debug("number = " + value);
-        this.value = value;
+        logger.debug("value = " + value);
+        if(value >= 1 && value <= 6){
+            this.value = value;
+        }else{
+            logger.error("Illegal die value " + value);
+            throw new IllegalArgumentException("Illegal die value " + value);
+        }
     }
 
-    public void rollDie(){
-        logger.trace("rollDie() is called");
+    public boolean isRolled() {
+        return isRolled;
+    }
+
+    public void roll(){
+        logger.trace("roll() is called");
         value = 1 + random.nextInt(6);
+        isRolled = true;
         logger.debug("number = " + value);
+    }
+
+    public void reset(){
+        logger.trace("reset() is called");
+        isRolled = false;
+        value = INIT_DIE_VALUE;
     }
 }
