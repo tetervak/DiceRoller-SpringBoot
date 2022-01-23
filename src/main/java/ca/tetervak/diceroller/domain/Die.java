@@ -17,11 +17,11 @@ public class Die implements Serializable {
 
     private final Random random;
 
-    public Die(){
+    public Die() {
         this(new Random());
     }
 
-    public Die(Random random){
+    public Die(Random random) {
         this.random = random;
         logger.trace("Die constructor is called.");
     }
@@ -33,9 +33,9 @@ public class Die implements Serializable {
     public void setValue(int value) {
         logger.trace("setNumber() is called.");
         logger.debug("value = " + value);
-        if(value >= 1 && value <= 6){
+        if (value >= 1 && value <= 6) {
             this.value = value;
-        }else{
+        } else {
             logger.error("Illegal die value " + value);
             throw new IllegalArgumentException("Illegal die value " + value);
         }
@@ -45,14 +45,14 @@ public class Die implements Serializable {
         return isRolled;
     }
 
-    public void roll(){
+    public void roll() {
         logger.trace("roll() is called");
         value = 1 + random.nextInt(6);
         isRolled = true;
         logger.debug("number = " + value);
     }
 
-    public void reset(){
+    public void reset() {
         logger.trace("reset() is called");
         isRolled = false;
         value = INIT_DIE_VALUE;

@@ -59,7 +59,7 @@ class DieTest {
     }
 
     @RepeatedTest(10)
-    void roll_ten_times(){
+    void roll_ten_times() {
         roll();
     }
 

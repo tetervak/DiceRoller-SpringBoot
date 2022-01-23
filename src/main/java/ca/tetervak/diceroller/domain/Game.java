@@ -39,17 +39,16 @@ public class Game implements Serializable {
 
     public final void setNumberOfDice(int numberOfDice) {
         logger.trace("setNumberOfDice() is called");
-        if(numberOfDice > 0){
+        if (numberOfDice > 0) {
             this.numberOfDice = numberOfDice;
             dice = new Die[numberOfDice];
             for (int i = 0; i < dice.length; i++) {
                 dice[i] = new Die(random);
             }
-        }else{
+        } else {
             logger.error("Illegal number of dice " + numberOfDice);
             throw new IllegalArgumentException("Illegal number of dice " + numberOfDice);
         }
-
     }
 
     public boolean isRolled() {

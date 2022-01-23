@@ -17,11 +17,11 @@ public class DiceController {
     public ModelAndView diceGame(
             @RequestParam(defaultValue = "3") int numberOfDice,
             @RequestParam(defaultValue = "false") boolean isRolled
-    ){
+    ) {
         logger.trace("diceGame() is called");
 
         Game game = new Game(numberOfDice);
-        if(isRolled){
+        if (isRolled) {
             game.roll();
         }
 

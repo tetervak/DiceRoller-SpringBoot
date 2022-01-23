@@ -30,7 +30,8 @@
             <select id="c" th:name="numberOfDice">
                 <option th:each="i : ${#numbers.sequence(1, 5)}"
                         th:selected="${i == game.numberOfDice}"
-                        th:value="${i}" th:text="${i}">1</option>
+                        th:value="${i}" th:text="${i}">1
+                </option>
                 <!--/*-->
                 <option th:value="2">2</option>
                 <option th:value="3" selected>3</option>
