@@ -14,11 +14,16 @@ public class DiceController {
     private final Logger logger = LoggerFactory.getLogger(DiceController.class);
 
     @GetMapping(value = {"/", "/dice-game"})
-    public ModelAndView diceGame(@RequestParam(defaultValue = "3") int count){
-        logger.trace("dice() is called");
+    public ModelAndView diceGame(
+            @RequestParam(defaultValue = "3") int numberOfDice,
+            @RequestParam(defaultValue = "false") boolean isRolled
+    ){
+        logger.trace("diceGame() is called");
 
-        Game game = new Game(count);
-        game.roll();
+        Game game = new Game(numberOfDice);
+        if(isRolled){
+            game.roll();
+        }
 
         return new ModelAndView("DiceGame", "game", game);
     }

@@ -10,7 +10,7 @@
 <header><h1>Dice Roller</h1></header>
 <main>
     <h2>Roll the Dice</h2>
-    <p>
+    <p th:if="${game.isRolled}">
         <img th:each="die: ${game.dice}"
              th:src="@{|images/dice/side_${die.value}.png|}"
              th:alt="'side ' + ${die.value}"
@@ -27,7 +27,7 @@
     <form action="DiceGame.html" th:action="@{dice-game}">
         <p>
             <label for="c">Number of Dice:</label>
-            <select id="c" th:name="count">
+            <select id="c" th:name="numberOfDice">
                 <option th:each="i : ${#numbers.sequence(1, 5)}"
                         th:selected="${i == game.numberOfDice}"
                         th:value="${i}" th:text="${i}">1</option>
@@ -40,6 +40,7 @@
             </select>
         </p>
         <p>
+            <input type="hidden" th:name="isRolled" value="true">
             <input type="submit" value="Roll">
         </p>
     </form>
