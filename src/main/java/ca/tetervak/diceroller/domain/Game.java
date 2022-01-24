@@ -23,7 +23,7 @@ public class Game implements Serializable {
     }
 
     public Game(Random random) {
-        this(DEFAULT_NUMBER_OF_DICE, new Random());
+        this(DEFAULT_NUMBER_OF_DICE, random);
     }
 
     public Game(int numberOfDice) {
