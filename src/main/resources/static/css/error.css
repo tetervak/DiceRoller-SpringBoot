@@ -1,0 +1,38 @@
+body{
+    padding-left: 1em;
+    font-family: sans-serif;
+}
+
+main{
+    padding-left: 1em;
+}
+
+h1{
+    color: #4caf50;
+    text-shadow: 2px 2px 5px #81c784;
+}
+
+h2 {
+    color: #E91E63;
+}
+
+label{
+    font-size: large;
+    font-weight: bolder;
+}
+
+.warning {
+    color: #673AB7;
+    font-size: larger;
+    font-style: oblique;
+}
+
+.error{
+    color: #DD2C00;
+}
+
+a{
+    color: #0288D1;
+    font-weight: bolder;
+    text-decoration: none;
+}

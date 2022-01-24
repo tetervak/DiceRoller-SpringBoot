@@ -22,6 +22,10 @@ public class Game implements Serializable {
         this(DEFAULT_NUMBER_OF_DICE);
     }
 
+    public Game(Random random) {
+        this(DEFAULT_NUMBER_OF_DICE, new Random());
+    }
+
     public Game(int numberOfDice) {
         this(numberOfDice, new Random());
     }

@@ -1,20 +1,31 @@
 package ca.tetervak.diceroller.domain;
 
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
+import java.util.Random;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class DieTest {
 
+    private static final long SEED = 45;
+    private static Random random;
     private Die die;
+
+    @BeforeAll
+    static void prepare(){
+        random = new Random();
+        random.setSeed(SEED);
+    }
 
     @BeforeEach
     void setUp() {
-        die = new Die();
+        die = new Die(random);
     }
 
     @Test

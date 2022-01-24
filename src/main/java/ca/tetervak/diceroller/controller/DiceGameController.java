@@ -4,14 +4,17 @@ import ca.tetervak.diceroller.domain.Game;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-@Controller
-public class DiceController {
+import javax.servlet.http.HttpServletRequest;
 
-    private final Logger logger = LoggerFactory.getLogger(DiceController.class);
+@Controller
+public class DiceGameController {
+
+    private final Logger logger = LoggerFactory.getLogger(DiceGameController.class);
 
     @GetMapping(value = {"/", "/dice-game"})
     public ModelAndView diceGame(
@@ -26,5 +29,16 @@ public class DiceController {
         }
 
         return new ModelAndView("DiceGame", "game", game);
+    }
+
+    @ExceptionHandler(Exception.class)
+    public ModelAndView handleError(HttpServletRequest req, Exception ex) {
+        logger.error("Request: " + req.getRequestURL() + " raised " + ex);
+
+        ModelAndView mav = new ModelAndView();
+        mav.addObject("exception", ex);
+        mav.addObject("url", req.getRequestURL());
+        mav.setViewName("Exception");
+        return mav;
     }
 }

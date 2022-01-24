@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../static/css/main.css" th:href="@{/css/main.css}">
+    <link rel="stylesheet" href="../static/css/error.css" th:href="@{/css/error.css}">
+    <link rel="stylesheet" href="../static/css/footer.css" th:href="@{/css/footer.css}">
+    <title>Exception</title>
+</head>
+<body>
+<header>
+    <h1>Exception</h1>
+    <p class="warning">
+        Do not show the details in production!
+    </p>
+</header>
+<main>
+    <h2>
+        The following error occurred on the server.
+    </h2>
+    <p>
+        <label>Failed URL: </label>
+        <span th:text="${url}">URL</span>
+    </p>
+    <p>
+        <label>Exception: </label><br/>
+        <span class="error" th:text="${exception.message}">Message</span>
+    </p>
+    <p>
+        View the page source for details.
+    </p>
+
+    <pre th:each="st: ${exception.stackTrace}" th:text="${st}">Stacktrace
+    </pre>
+
+</main>
+</body>
+</html>
